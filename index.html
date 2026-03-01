@@ -99,6 +99,155 @@ body::before {
 .cur { position: fixed; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .2s, height .2s; }
 .cur-ring { position: fixed; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(212,175,55,0.4); pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .15s, height .15s; }
 
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 600;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* MOBILE MENU DRAWER */
+.mobile-menu {
+  position: fixed;
+  top: 57px; left: 0; right: 0;
+  background: rgba(7,9,15,0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  z-index: 490;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+body.light .mobile-menu { background: rgba(245,243,238,0.98); }
+.mobile-menu.open { max-height: 400px; padding: 1rem 0; }
+.mobile-menu a {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  text-decoration: none;
+  padding: 0.9rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s, background 0.2s;
+}
+.mobile-menu a:hover { color: var(--gold); background: var(--gold-soft); }
+.mobile-menu a:last-child { border-bottom: none; }
+
+/* BACK TO TOP */
+.back-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  background: var(--gold);
+  color: #07090f;
+  border: none;
+  border-radius: 50%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 400;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+}
+.back-top.visible { opacity: 1; transform: translateY(0); }
+.back-top:hover { background: #e8c840; transform: translateY(-2px); }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 2rem; margin-top: 2rem; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+.tl-item {
+  position: relative;
+  padding: 0 0 2.5rem 2rem;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute;
+  left: -1.6rem;
+  top: 0.3rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--gold);
+  transition: background 0.3s;
+}
+.tl-item:hover .tl-dot { background: var(--gold); }
+.tl-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+.tl-company {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+.tl-desc {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--muted2);
+  line-height: 1.65;
+}
+
+/* LIGHT MODE PERSONALITY */
+body.light .s-title { color: #1a1410; }
+body.light .s-title span { color: #7A7060; }
+body.light .hero-h1 { color: #1a1410; }
+body.light .hero-h1 .g { color: var(--gold); }
+body.light .stat { background: #E8E4DC; }
+body.light .stat:hover { background: #DDD8CF; }
+body.light .ff, body.light .fb { background: #E8E4DC; }
+body.light .fb { background: #DDD8CF; }
+body.light .svc { background: #E8E4DC; }
+body.light .svc:hover { background: #DDD8CF; }
+body.light .pow-item { background: #E8E4DC; }
+body.light .pow-item:hover { background: #DDD8CF; }
+body.light .pillar { background: #E8E4DC; }
+body.light .pillar:hover { background: #DDD8CF; }
+body.light .connect-card { background: #E8E4DC; }
+body.light .connect-card:hover { background: #DDD8CF; }
+body.light .cta-block { background: #E8E4DC; }
+body.light .ticker { background: rgba(212,175,55,0.08); }
+body.light .ticker.t2 { background: rgba(13,107,85,0.05); }
+body.light .ticker-item { color: #8B6914; }
+body.light .ticker.t2 .ticker-item { color: #0D6B55; }
+body.light .tl-desc { color: #5A5040; }
+body.light #gameCanvas { background: rgba(232,228,220,0.8); border-color: rgba(180,140,20,0.2); }
+
 /* THEME TOGGLE */
 .theme-toggle {
   display: flex;
@@ -222,12 +371,13 @@ hr.div { border: none; border-top: 1px solid var(--border); margin: 0 2.5rem; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); }
 .flip { height: 200px; perspective: 1000px; cursor: none; }
 .flip-in { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .55s cubic-bezier(.4,0,.2,1); }
-.flip.on .flip-in, .flip:hover .flip-in { transform: rotateY(180deg); }
+.flip.on .flip-in { transform: rotateY(180deg); }
 .ff, .fb { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 1.5rem; background: var(--surface); }
 .fb { background: var(--surface2); transform: rotateY(180deg); border: 1px solid var(--border-gold); }
 .ff-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
 .ff-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted2); }
-.ff-hint { font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; opacity: 0.5; }
+.ff-hint { font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; opacity: 0.5; transition: opacity 0.3s; }
+.flip.on .ff-hint { opacity: 0; }
 .fb-title { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem; line-height: 1.2; }
 .fb-desc { font-size: 0.78rem; font-weight: 300; color: var(--muted2); line-height: 1.6; }
 .fb-tag { font-family: 'DM Mono', monospace; font-size: 0.48rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(200,240,232,0.2); padding: 0.2rem 0.6rem; margin-top: 0.6rem; opacity: 0.7; }
@@ -308,6 +458,86 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
 
 @keyframes up { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
 
+/* GAME PICKER */
+.game-picker {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+  justify-content: center; margin-bottom: 1.5rem;
+}
+.game-pick {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+  background: var(--surface2); color: var(--muted2);
+  border: 1px solid var(--border); padding: 0.6rem 1.2rem;
+  cursor: pointer; transition: all .2s; border-radius: 2px;
+}
+.game-pick:hover, .game-pick.active {
+  background: var(--gold); color: #07090f;
+  border-color: var(--gold); font-weight: 500;
+}
+.game-screen { display: none; width: 100%; align-items: center; flex-direction: column; }
+.game-screen.active { display: flex; }
+
+.g-overlay {
+  position: absolute; inset: 0; display: flex;
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 1rem; background: rgba(7,9,15,0.82);
+  border: 1px solid rgba(212,175,55,0.15);
+}
+.g-msg {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 0.2em; text-transform: uppercase; color: #9AA0B0;
+}
+.g-btn {
+  font-family: 'DM Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  background: #D4AF37; color: #07090f; border: none;
+  padding: 0.8rem 2rem; cursor: pointer; font-weight: 500;
+  transition: all .2s; border-radius: 2px;
+}
+.g-btn:hover { background: #e8c840; transform: translateY(-1px); }
+
+/* TIC TAC TOE */
+.ttt-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.5rem; padding: 1.5rem;
+  background: rgba(13,16,24,0.6);
+  border: 1px solid rgba(212,175,55,0.15);
+  width: 100%; max-width: 360px;
+}
+.ttt-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 3px; background: rgba(212,175,55,0.15);
+  border: 1px solid rgba(212,175,55,0.2); padding: 3px;
+  width: 240px;
+}
+.ttt-cell {
+  background: var(--surface);
+  height: 75px; display: flex; align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700;
+  cursor: pointer; transition: background .2s;
+}
+.ttt-cell:hover { background: var(--surface2); }
+.ttt-cell.x { color: var(--gold); }
+.ttt-cell.o { color: var(--accent); }
+.ttt-cell.win { background: rgba(212,175,55,0.15); }
+
+/* CANVASES */
+#pongCanvas, #spaceCanvas {
+  width: 100%;
+  height: 200px;
+  display: block;
+  border: 1px solid rgba(212,175,55,0.15);
+  background: rgba(13,16,24,0.6);
+  cursor: none;
+  border-radius: 2px;
+}
+.game-canvas-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+}
+
 /* GAME */
 .game-wrap {
   position: relative;
@@ -317,6 +547,7 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
   align-items: center;
   padding: 3rem 2.5rem 2rem;
   border-top: 1px solid var(--border);
+  width: 100%;
 }
 .game-label {
   font-family: 'DM Mono', monospace;
@@ -324,19 +555,8 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
 }
-#gameCanvas {
-  width: 100%;
-  max-width: 700px;
-  height: 160px;
-  display: block;
-  border: 1px solid rgba(212,175,55,0.15);
-  background: rgba(13,16,24,0.6);
-  cursor: none;
-  border-radius: 2px;
-}
-
 /* Hide custom cursor on touch devices */
 @media (hover: none) and (pointer: coarse) {
   .cur, .cur-ring { display: none; }
@@ -351,6 +571,7 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
 @media (max-width: 960px) {
   nav { padding: 1rem 1.25rem; }
   .nav-links { display: none; }
+  .hamburger { display: flex; }
   .s { padding: 4rem 1.25rem; }
   hr.div { margin: 0 1.25rem; }
   .hero { padding: 6rem 1.25rem 3.5rem; }
@@ -438,11 +659,30 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
     <li><a href="#philosophy">Philosophy</a></li>
     <li><a href="#connect">Contact</a></li>
   </ul>
-  <div class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">
-    <span class="theme-icon" id="themeIcon">🌙</span>
-    <div class="toggle-track"><div class="toggle-thumb"></div></div>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">
+      <span class="theme-icon" id="themeIcon">🌙</span>
+      <div class="toggle-track"><div class="toggle-thumb"></div></div>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#work" onclick="closeMenu()">Work</a>
+  <a href="#philosophy" onclick="closeMenu()">Philosophy</a>
+  <a href="#connect" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <!-- TOP TICKER -->
 <div class="ticker" style="margin-top:57px;">
@@ -501,14 +741,14 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
   <div class="s-label">Skills</div>
   <h2 class="s-title reveal">Tap Any Card<br><span>to Reveal</span></h2>
   <div class="grid-4 reveal">
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="ff"><span class="ff-icon">✍️</span><span class="ff-label">Writing</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Writing & Threads</div><p class="fb-desc">Long-form threads that read like strategy decks. Educational content bridging onchain mechanics with clear language.</p><span class="fb-tag">Available</span></div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="ff"><span class="ff-icon">🎬</span><span class="ff-label">Clipping</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Video Clipping</div><p class="fb-desc">Turning raw footage into shareable high-impact clips. Cut for retention, emotion, and virality.</p><span class="fb-tag">Available</span></div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="ff"><span class="ff-icon">🎨</span><span class="ff-label">Design</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Graphics & Motion</div><p class="fb-desc">Custom visuals, infographics and motion graphics that make abstract concepts instantly understandable.</p><span class="fb-tag">Available</span></div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="ff"><span class="ff-icon">🤖</span><span class="ff-label">AI Prompts</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">AI Prompt Engineering</div><p class="fb-desc">Crafting powerful prompts that unlock real creative and operational leverage for creators and projects.</p><span class="fb-tag">Available</span></div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="ff"><span class="ff-icon">🛡️</span><span class="ff-label">Community</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Community Manager & Mod</div><p class="fb-desc">Managing and moderating communities with intention across Discord, Telegram, and X.</p><span class="fb-tag">Available</span></div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="ff"><span class="ff-icon">📈</span><span class="ff-label">Growth</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Growth Specialist</div><p class="fb-desc">Building sustainable participation loops and storytelling frameworks that drive real onchain growth.</p><span class="fb-tag">Available</span></div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="ff"><span class="ff-icon">🤝</span><span class="ff-label">Biz Dev</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Business Development</div><p class="fb-desc">Forging partnerships, identifying opportunities, and connecting teams, products, and communities onchain.</p><span class="fb-tag">Available</span></div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="flip-in"><div class="ff"><span class="ff-icon">📋</span><span class="ff-label">PM</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Project Management</div><p class="fb-desc">Coordinating timelines, teams, and deliverables from ideation to execution — structured and clear.</p><span class="fb-tag">Available</span></div></div></div>
+    <div class="flip"><div class="flip-in"><div class="ff"><span class="ff-icon">✍️</span><span class="ff-label">Writing</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Writing & Threads</div><p class="fb-desc">Long-form threads that read like strategy decks. Educational content bridging onchain mechanics with clear language.</p><span class="fb-tag">Available</span></div></div></div>
+    <div class="flip"><div class="flip-in"><div class="ff"><span class="ff-icon">🎬</span><span class="ff-label">Clipping</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Video Clipping</div><p class="fb-desc">Turning raw footage into shareable high-impact clips. Cut for retention, emotion, and virality.</p><span class="fb-tag">Available</span></div></div></div>
+    <div class="flip"><div class="flip-in"><div class="ff"><span class="ff-icon">🎨</span><span class="ff-label">Design</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Graphics & Motion</div><p class="fb-desc">Custom visuals, infographics and motion graphics that make abstract concepts instantly understandable.</p><span class="fb-tag">Available</span></div></div></div>
+    <div class="flip"><div class="flip-in"><div class="ff"><span class="ff-icon">🤖</span><span class="ff-label">AI Prompts</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">AI Prompt Engineering</div><p class="fb-desc">Crafting powerful prompts that unlock real creative and operational leverage for creators and projects.</p><span class="fb-tag">Available</span></div></div></div>
+    <div class="flip"><div class="flip-in"><div class="ff"><span class="ff-icon">🛡️</span><span class="ff-label">Community</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Community Manager & Mod</div><p class="fb-desc">Managing and moderating communities with intention across Discord, Telegram, and X.</p><span class="fb-tag">Available</span></div></div></div>
+    <div class="flip"><div class="flip-in"><div class="ff"><span class="ff-icon">📈</span><span class="ff-label">Growth</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Growth Specialist</div><p class="fb-desc">Building sustainable participation loops and storytelling frameworks that drive real onchain growth.</p><span class="fb-tag">Available</span></div></div></div>
+    <div class="flip"><div class="flip-in"><div class="ff"><span class="ff-icon">🤝</span><span class="ff-label">Biz Dev</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Business Development</div><p class="fb-desc">Forging partnerships, identifying opportunities, and connecting teams, products, and communities onchain.</p><span class="fb-tag">Available</span></div></div></div>
+    <div class="flip"><div class="flip-in"><div class="ff"><span class="ff-icon">📋</span><span class="ff-label">PM</span><span class="ff-hint">tap to reveal</span></div><div class="fb"><div class="fb-title">Project Management</div><p class="fb-desc">Coordinating timelines, teams, and deliverables from ideation to execution — structured and clear.</p><span class="fb-tag">Available</span></div></div></div>
   </div>
 </div>
 
@@ -552,17 +792,17 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
 <div class="s" id="experience">
   <div class="s-label">Experience</div>
   <h2 class="s-title reveal">Where I've<br><span>Shown Up</span></h2>
-  <div class="services-list reveal">
-    <div class="svc"><span class="svc-num">01</span><span class="svc-name">CroutonJones</span><span class="svc-desc">Represented the brand as Ambassador — driving awareness, community engagement and onchain narrative.</span><span class="svc-tag">Ambassador</span></div>
-    <div class="svc"><span class="svc-num">02</span><span class="svc-name">CluckBet</span><span class="svc-desc">Key Opinion Leader — creating content, building hype and driving community participation.</span><span class="svc-tag">KOL</span></div>
-    <div class="svc"><span class="svc-num">03</span><span class="svc-name">HypeBattle</span><span class="svc-desc">Key Opinion Leader — amplifying the project through strategic content and audience engagement.</span><span class="svc-tag">KOL</span></div>
-    <div class="svc"><span class="svc-num">04</span><span class="svc-name">Puffverse</span><span class="svc-desc">Ambassador — bridging the community with the project's vision and onchain ecosystem.</span><span class="svc-tag">Ambassador</span></div>
-    <div class="svc"><span class="svc-num">05</span><span class="svc-name">Pirate Realm</span><span class="svc-desc">Active contributor helping shape the project's growth, content and community strategy.</span><span class="svc-tag">Contributor</span></div>
-    <div class="svc"><span class="svc-num">06</span><span class="svc-name">Vixichain</span><span class="svc-desc">Contributor — supporting ecosystem growth through content, strategy and community building.</span><span class="svc-tag">Contributor</span></div>
-    <div class="svc"><span class="svc-num">07</span><span class="svc-name">Victus Global</span><span class="svc-desc">Business Development — forging partnerships and building sustainable growth pipelines for the project.</span><span class="svc-tag">Biz Dev</span></div>
-    <div class="svc"><span class="svc-num">08</span><span class="svc-name">AI Steam Labs</span><span class="svc-desc">Personal Assistant — supporting operations, coordination and strategic execution at the executive level.</span><span class="svc-tag">PA</span></div>
-    <div class="svc"><span class="svc-num">09</span><span class="svc-name">The Burrow</span><span class="svc-desc">Contributor & KOL — creating content and driving community engagement across the ecosystem.</span><span class="svc-tag">Contributor / KOL</span></div>
-    <div class="svc"><span class="svc-num">10</span><span class="svc-name">Memecoin Projects</span><span class="svc-desc">Moderated and managed 5+ memecoin communities — maintaining culture, enforcing standards and driving engagement.</span><span class="svc-tag">Mod & Manager</span></div>
+  <div class="timeline reveal">
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-role">Ambassador</div><div class="tl-company">CroutonJones</div><p class="tl-desc">Represented the brand — driving awareness, community engagement and onchain narrative.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-role">KOL</div><div class="tl-company">CluckBet</div><p class="tl-desc">Key Opinion Leader — creating content, building hype and driving community participation.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-role">KOL</div><div class="tl-company">HypeBattle</div><p class="tl-desc">Amplified the project through strategic content and audience engagement.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-role">Ambassador</div><div class="tl-company">Puffverse</div><p class="tl-desc">Bridged the community with the project's vision and onchain ecosystem.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-role">Contributor</div><div class="tl-company">Pirate Realm</div><p class="tl-desc">Helped shape the project's growth, content and community strategy.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-role">Contributor</div><div class="tl-company">Vixichain</div><p class="tl-desc">Supported ecosystem growth through content, strategy and community building.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-role">Business Development</div><div class="tl-company">Victus Global</div><p class="tl-desc">Forged partnerships and built sustainable growth pipelines for the project.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-role">Personal Assistant</div><div class="tl-company">AI Steam Labs</div><p class="tl-desc">Supported operations, coordination and strategic execution at the executive level.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-role">Contributor / KOL</div><div class="tl-company">The Burrow</div><p class="tl-desc">Created content and drove community engagement across the ecosystem.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-role">Moderator & Community Manager</div><div class="tl-company">5+ Memecoin Projects</div><p class="tl-desc">Moderated and managed multiple memecoin communities — maintaining culture, enforcing standards and driving engagement.</p></div>
   </div>
 </div>
 
@@ -608,14 +848,41 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
   </div>
 </div>
 
-<!-- BALL GAME -->
+<!-- ARCADE -->
 <div class="game-wrap">
-  <div class="game-label">move the brick · keep it bouncing</div>
-  <div style="position:relative; width:100%; max-width:700px;">
-    <canvas id="gameCanvas"></canvas>
-    <div id="gameOverlay" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:rgba(7,9,15,0.75);border:1px solid rgba(212,175,55,0.15);">
-      <p id="overlayMsg" style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#9AA0B0;">Ready to play?</p>
-      <button id="gameBtn" onclick="startGame()" style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;background:#D4AF37;color:#07090f;border:none;padding:0.8rem 2rem;cursor:pointer;font-weight:500;transition:all .2s;">▶ Play</button>
+  <div class="game-label">🕹 mini arcade · pick a game</div>
+  <div class="game-picker">
+    <button class="game-pick active" onclick="switchGame('pong', this)">🏓 Ball & Brick</button>
+    <button class="game-pick" onclick="switchGame('tictactoe', this)">⭕ Tic Tac Toe</button>
+  </div>
+
+  <!-- PONG -->
+  <div class="game-screen active" id="game-pong">
+    <div class="game-canvas-wrap">
+      <canvas id="pongCanvas"></canvas>
+      <div id="pongOverlay" class="g-overlay">
+        <p id="pongMsg" class="g-msg">Ready to play?</p>
+        <button class="g-btn" onclick="startPong()">▶ Play</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIC TAC TOE -->
+  <div class="game-screen" id="game-tictactoe">
+    <div class="ttt-wrap">
+      <p class="g-msg" id="tttMsg">Your turn — you are ✕</p>
+      <div class="ttt-grid" id="tttGrid">
+        <div class="ttt-cell" onclick="tttMove(0)"></div>
+        <div class="ttt-cell" onclick="tttMove(1)"></div>
+        <div class="ttt-cell" onclick="tttMove(2)"></div>
+        <div class="ttt-cell" onclick="tttMove(3)"></div>
+        <div class="ttt-cell" onclick="tttMove(4)"></div>
+        <div class="ttt-cell" onclick="tttMove(5)"></div>
+        <div class="ttt-cell" onclick="tttMove(6)"></div>
+        <div class="ttt-cell" onclick="tttMove(7)"></div>
+        <div class="ttt-cell" onclick="tttMove(8)"></div>
+      </div>
+      <button class="g-btn" onclick="resetTTT()" style="margin-top:1rem;">↺ Reset</button>
     </div>
   </div>
 </div>
@@ -628,6 +895,33 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
 </footer>
 
 <script>
+  // HAMBURGER
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const ham = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    ham.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+
+  // BACK TO TOP
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // FLIP CARDS — clean toggle, tap to reveal / tap to flip back
+  document.querySelectorAll('.flip').forEach(card => {
+    const hint = card.querySelector('.ff-hint');
+    card.addEventListener('click', () => {
+      card.classList.toggle('on');
+      hint.textContent = card.classList.contains('on') ? 'tap to flip back' : 'tap to reveal';
+    });
+  });
+
   function toggleTheme() {
     document.body.classList.toggle('light');
     const isLight = document.body.classList.contains('light');
@@ -656,139 +950,191 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
     }, 2500);
   }
 
-  // BALL GAME
-  const canvas = document.getElementById('gameCanvas');
-  const ctx = canvas.getContext('2d');
-  const overlay = document.getElementById('gameOverlay');
-  const overlayMsg = document.getElementById('overlayMsg');
-  const gameBtn = document.getElementById('gameBtn');
-
-  function resizeCanvas() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+  // ── GAME SWITCHER ──
+  function switchGame(id, btn) {
+    document.querySelectorAll('.game-screen').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.game-pick').forEach(b => b.classList.remove('active'));
+    document.getElementById('game-' + id).classList.add('active');
+    btn.classList.add('active');
+    stopAllGames();
+    if (id === 'pong') initPongCanvas();
   }
-  resizeCanvas();
-  window.addEventListener('resize', () => { resizeCanvas(); });
-
-  const BALL_COLORS = ['#D4AF37', '#1DE9B6', '#C8F0E8', '#FF6B6B', '#A78BFA', '#F472B6', '#34D399', '#FB923C'];
-  let colorIdx = 0;
-
-  const GOLD = '#D4AF37';
-  let ball = {}, paddle = {}, animId, running = false;
-
-  function resetBall() {
-    const W = canvas.width, H = canvas.height;
-    paddle = { w: Math.min(120, W * 0.2), h: 8, x: W/2 - 60, y: H - 24 };
-    ball = { r: 7, x: W/2, y: H/2, vx: 3.2, vy: -3.2, color: BALL_COLORS[0] };
-    colorIdx = 0;
+  function stopAllGames() {
+    if (pongAnimId) { cancelAnimationFrame(pongAnimId); pongAnimId = null; pongRunning = false; }
   }
 
-  function startGame() {
-    overlay.style.display = 'none';
-    running = true;
-    resetBall();
-    if (animId) cancelAnimationFrame(animId);
-    drawGame();
+  // ══════════════════════════════
+  // 🏓 PONG / BALL & BRICK
+  // ══════════════════════════════
+  const pongCanvas = document.getElementById('pongCanvas');
+  const pongCtx = pongCanvas.getContext('2d');
+  let pongAnimId = null, pongRunning = false;
+  const BALL_COLORS = ['#D4AF37','#1DE9B6','#C8F0E8','#FF6B6B','#A78BFA','#F472B6','#34D399','#FB923C'];
+  let pBall = {}, pPaddle = {}, pColorIdx = 0;
+
+  function initPongCanvas() {
+    pongCanvas.width = pongCanvas.offsetWidth || 700;
+    pongCanvas.height = 200;
+  }
+  initPongCanvas();
+
+  function resetPong() {
+    const W = pongCanvas.width, H = pongCanvas.height;
+    pPaddle = { w: Math.min(120, W*0.2), h: 8, x: W/2-60, y: H-24 };
+    pBall = { r:7, x:W/2, y:H/2, vx:3.2, vy:-3.2, color: BALL_COLORS[0] };
+    pColorIdx = 0;
   }
 
-  function gameOver() {
-    running = false;
-    cancelAnimationFrame(animId);
-    overlayMsg.textContent = 'You missed it 😅';
-    gameBtn.textContent = '↺ Retry';
-    overlay.style.display = 'flex';
+  function startPong() {
+    document.getElementById('pongOverlay').style.display = 'none';
+    pongRunning = true; resetPong();
+    if (pongAnimId) cancelAnimationFrame(pongAnimId);
+    drawPong();
   }
+  window.startPong = startPong;
 
-  window.startGame = startGame;
-
-  // Mouse
-  canvas.addEventListener('mousemove', e => {
-    if (!running) return;
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    paddle.x = (e.clientX - rect.left) * scaleX - paddle.w / 2;
-    paddle.x = Math.max(0, Math.min(canvas.width - paddle.w, paddle.x));
+  pongCanvas.addEventListener('mousemove', e => {
+    if (!pongRunning) return;
+    const r = pongCanvas.getBoundingClientRect();
+    pPaddle.x = (e.clientX - r.left) * (pongCanvas.width/r.width) - pPaddle.w/2;
+    pPaddle.x = Math.max(0, Math.min(pongCanvas.width - pPaddle.w, pPaddle.x));
   });
-
-  // Touch
-  canvas.addEventListener('touchmove', e => {
-    if (!running) return;
+  pongCanvas.addEventListener('touchmove', e => {
+    if (!pongRunning) return;
     e.preventDefault();
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    paddle.x = (e.touches[0].clientX - rect.left) * scaleX - paddle.w / 2;
-    paddle.x = Math.max(0, Math.min(canvas.width - paddle.w, paddle.x));
+    const r = pongCanvas.getBoundingClientRect();
+    pPaddle.x = (e.touches[0].clientX - r.left) * (pongCanvas.width/r.width) - pPaddle.w/2;
+    pPaddle.x = Math.max(0, Math.min(pongCanvas.width - pPaddle.w, pPaddle.x));
   }, { passive: false });
 
-  function drawGame() {
-    const W = canvas.width, H = canvas.height;
-    ctx.clearRect(0, 0, W, H);
-
-    ctx.fillStyle = 'rgba(7,9,15,0.5)';
-    ctx.fillRect(0, 0, W, H);
-
-    // Ball glow
-    const grd = ctx.createRadialGradient(ball.x, ball.y, 0, ball.x, ball.y, ball.r * 4);
-    grd.addColorStop(0, ball.color + '44');
-    grd.addColorStop(1, 'transparent');
-    ctx.fillStyle = grd;
-    ctx.beginPath();
-    ctx.arc(ball.x, ball.y, ball.r * 4, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Ball
-    ctx.fillStyle = ball.color;
-    ctx.shadowColor = ball.color;
-    ctx.shadowBlur = 12;
-    ctx.beginPath();
-    ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.shadowBlur = 0;
-
-    // Paddle
-    ctx.fillStyle = 'rgba(15,40,90,0.8)';
-    ctx.strokeStyle = GOLD;
-    ctx.lineWidth = 1.5;
-    ctx.shadowColor = GOLD;
-    ctx.shadowBlur = 8;
-    ctx.beginPath();
-    ctx.roundRect(paddle.x, paddle.y, paddle.w, paddle.h, 4);
-    ctx.fill();
-    ctx.stroke();
-    ctx.shadowBlur = 0;
-
-    // Physics
-    ball.x += ball.vx;
-    ball.y += ball.vy;
-
-    if (ball.x - ball.r < 0) { ball.x = ball.r; ball.vx *= -1; }
-    if (ball.x + ball.r > W) { ball.x = W - ball.r; ball.vx *= -1; }
-    if (ball.y - ball.r < 0) { ball.y = ball.r; ball.vy *= -1; }
-
-    // Paddle bounce
-    if (
-      ball.y + ball.r >= paddle.y &&
-      ball.y - ball.r <= paddle.y + paddle.h &&
-      ball.x >= paddle.x &&
-      ball.x <= paddle.x + paddle.w
-    ) {
-      ball.vy = -Math.abs(ball.vy);
-      const hit = (ball.x - (paddle.x + paddle.w / 2)) / (paddle.w / 2);
-      ball.vx = hit * 4.5;
-      ball.y = paddle.y - ball.r;
-      // Change color on every hit
-      colorIdx = (colorIdx + 1) % BALL_COLORS.length;
-      ball.color = BALL_COLORS[colorIdx];
+  function drawPong() {
+    const W = pongCanvas.width, H = pongCanvas.height;
+    pongCtx.clearRect(0,0,W,H);
+    pongCtx.fillStyle = 'rgba(7,9,15,0.6)';
+    pongCtx.fillRect(0,0,W,H);
+    // glow
+    const g = pongCtx.createRadialGradient(pBall.x,pBall.y,0,pBall.x,pBall.y,pBall.r*5);
+    g.addColorStop(0, pBall.color+'55'); g.addColorStop(1,'transparent');
+    pongCtx.fillStyle = g;
+    pongCtx.beginPath(); pongCtx.arc(pBall.x,pBall.y,pBall.r*5,0,Math.PI*2); pongCtx.fill();
+    // ball
+    pongCtx.fillStyle = pBall.color; pongCtx.shadowColor = pBall.color; pongCtx.shadowBlur = 12;
+    pongCtx.beginPath(); pongCtx.arc(pBall.x,pBall.y,pBall.r,0,Math.PI*2); pongCtx.fill();
+    pongCtx.shadowBlur = 0;
+    // paddle
+    pongCtx.fillStyle = 'rgba(15,40,90,0.9)';
+    pongCtx.strokeStyle = '#D4AF37'; pongCtx.lineWidth = 1.5;
+    pongCtx.shadowColor = '#D4AF37'; pongCtx.shadowBlur = 8;
+    pongCtx.beginPath(); pongCtx.roundRect(pPaddle.x,pPaddle.y,pPaddle.w,pPaddle.h,4);
+    pongCtx.fill(); pongCtx.stroke(); pongCtx.shadowBlur = 0;
+    // physics
+    pBall.x += pBall.vx; pBall.y += pBall.vy;
+    if (pBall.x-pBall.r<0) { pBall.x=pBall.r; pBall.vx*=-1; }
+    if (pBall.x+pBall.r>W) { pBall.x=W-pBall.r; pBall.vx*=-1; }
+    if (pBall.y-pBall.r<0) { pBall.y=pBall.r; pBall.vy*=-1; }
+    if (pBall.y+pBall.r>=pPaddle.y && pBall.y-pBall.r<=pPaddle.y+pPaddle.h && pBall.x>=pPaddle.x && pBall.x<=pPaddle.x+pPaddle.w) {
+      pBall.vy = -Math.abs(pBall.vy);
+      pBall.vx = ((pBall.x-(pPaddle.x+pPaddle.w/2))/(pPaddle.w/2))*4.5;
+      pBall.y = pPaddle.y-pBall.r;
+      pColorIdx = (pColorIdx+1)%BALL_COLORS.length; pBall.color = BALL_COLORS[pColorIdx];
     }
-
-    // Miss
-    if (ball.y - ball.r > H) {
-      gameOver();
-      return;
+    if (pBall.y-pBall.r>H) {
+      pongRunning=false; cancelAnimationFrame(pongAnimId);
+      document.getElementById('pongMsg').textContent='You missed it 😅';
+      document.querySelector('#game-pong .g-btn').textContent='↺ Retry';
+      document.getElementById('pongOverlay').style.display='flex'; return;
     }
-
-    animId = requestAnimationFrame(drawGame);
+    pongAnimId = requestAnimationFrame(drawPong);
   }
+
+  // ══════════════════════════════
+  // ⭕ TIC TAC TOE vs AI
+  // ══════════════════════════════
+  let tttBoard = Array(9).fill(''), tttOver = false;
+
+  function tttMove(i) {
+    if (tttBoard[i] || tttOver) return;
+    tttBoard[i] = 'X';
+    renderTTT();
+    const w = checkTTT();
+    if (w) { endTTT(w, 'X'); return; }
+    if (tttBoard.every(c=>c)) { endTTT(null, null); return; }
+    document.getElementById('tttMsg').textContent = 'AI thinking...';
+    setTimeout(() => { aiMoveTTT(); }, 350);
+  }
+  window.tttMove = tttMove;
+
+  function aiMoveTTT() {
+    let best = -Infinity, move = -1;
+    tttBoard.forEach((c,i) => {
+      if (!c) {
+        tttBoard[i]='O';
+        const s = minimax(tttBoard, 0, false);
+        tttBoard[i]='';
+        if (s>best) { best=s; move=i; }
+      }
+    });
+    if (move>=0) tttBoard[move]='O';
+    renderTTT();
+    const w = checkTTT();
+    if (w) { endTTT(w, 'O'); return; }
+    if (tttBoard.every(c=>c)) { endTTT(null,null); return; }
+    document.getElementById('tttMsg').textContent = 'Your turn — you are ✕';
+  }
+
+  function minimax(board, depth, isMax) {
+    const w = checkTTT(board);
+    if (w==='O') return 10-depth;
+    if (w==='X') return depth-10;
+    if (board.every(c=>c)) return 0;
+    if (isMax) {
+      let best=-Infinity;
+      board.forEach((c,i)=>{ if(!c){ board[i]='O'; best=Math.max(best,minimax(board,depth+1,false)); board[i]=''; } });
+      return best;
+    } else {
+      let best=Infinity;
+      board.forEach((c,i)=>{ if(!c){ board[i]='X'; best=Math.min(best,minimax(board,depth+1,true)); board[i]=''; } });
+      return best;
+    }
+  }
+
+  function checkTTT(board=tttBoard) {
+    const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+    for (const [a,b,c] of wins) if (board[a]&&board[a]===board[b]&&board[a]===board[c]) return board[a];
+    return null;
+  }
+
+  function renderTTT() {
+    document.querySelectorAll('.ttt-cell').forEach((cell,i) => {
+      cell.textContent = tttBoard[i]==='X' ? '✕' : tttBoard[i]==='O' ? '○' : '';
+      cell.className = 'ttt-cell' + (tttBoard[i]==='X'?' x':tttBoard[i]==='O'?' o':'');
+    });
+  }
+
+  function endTTT(wins, winner) {
+    tttOver = true;
+    const msg = winner==='X'?'You won! 🎉':winner==='O'?'AI wins 🤖':'Draw! 🤝';
+    document.getElementById('tttMsg').textContent = msg;
+    if (wins) {
+      const cells = document.querySelectorAll('.ttt-cell');
+      [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]].forEach(([a,b,c])=>{
+        if (tttBoard[a]&&tttBoard[a]===tttBoard[b]&&tttBoard[a]===tttBoard[c]) {
+          [a,b,c].forEach(i=>cells[i].classList.add('win'));
+        }
+      });
+    }
+  }
+
+  function resetTTT() {
+    tttBoard=Array(9).fill(''); tttOver=false;
+    renderTTT();
+    document.getElementById('tttMsg').textContent='Your turn — you are ✕';
+  }
+  window.resetTTT = resetTTT;
+
+  window.addEventListener('resize',()=>{
+    initPongCanvas();
+  });
 
   const cur = document.getElementById('cur');
   const curR = document.getElementById('curR');
