@@ -4,6 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>kosi ♟︎ | onchain_fiend</title>
+
+<!-- SEO -->
+<meta name="description" content="Faith-rooted creator & strategist operating at the intersection of onchain technology, storytelling and real economic design. Multi-time thread contest winner. @onchain_fiend">
+<meta name="keywords" content="onchain_fiend, kosi, web3 creator, onchain strategist, content creator, thread writer, community manager, crypto KOL, blockchain, NFT, DeFi, storytelling">
+<meta name="author" content="kosi | onchain_fiend">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://onchainfiend.github.io/onchainfiend/">
+
+<!-- Open Graph (link previews on X, Telegram, Discord, WhatsApp) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://onchainfiend.github.io/onchainfiend/">
+<meta property="og:title" content="kosi ♟︎ | onchain_fiend — Onchain Creator & Strategist">
+<meta property="og:description" content="Faith-rooted creator & strategist. Multi-time thread contest winner. I don't chase hype — I design clarity.">
+<meta property="og:image" content="https://onchainfiend.github.io/onchainfiend/preview.jpg">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@onchain_fiend">
+<meta name="twitter:creator" content="@onchain_fiend">
+<meta name="twitter:title" content="kosi ♟︎ | onchain_fiend — Onchain Creator & Strategist">
+<meta name="twitter:description" content="Faith-rooted creator & strategist. Multi-time thread contest winner. I don't chase hype — I design clarity.">
+<meta name="twitter:image" content="https://onchainfiend.github.io/onchainfiend/preview.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -651,6 +673,14 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
   .pow-url { max-width: 140px; font-size: 0.48rem; }
 }
 </style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XTEW888N0B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XTEW888N0B');
+</script>
 </head>
 <body>
 
@@ -825,10 +855,10 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
   <div class="s-label">Philosophy</div>
   <h2 class="s-title reveal">The Pillars<br><span>I Build On</span></h2>
   <div class="pillars-grid reveal">
-    <div class="pillar"><div class="p-num">01</div><div class="p-title">Economic Immersion over Speculation</div><p class="p-text">Real participation loops matter more than price. I help projects and audiences understand how to be inside the system — not just watching it.</p></div>
-    <div class="pillar"><div class="p-num">02</div><div class="p-title">Narrative Resilience</div><p class="p-text">Stories that survive bear markets. In volatile markets, narrative is the only durable asset. I help build that foundation from day one.</p></div>
-    <div class="pillar"><div class="p-num">03</div><div class="p-title">Metaverse as Coordination Layer</div><p class="p-text">Not pixels. Not hype. A genuine place where ownership, community, and culture converge into something structurally significant.</p></div>
-    <div class="pillar"><div class="p-num">04</div><div class="p-title">Faith as Foundation</div><p class="p-text">𓆩 Son of God 𓆪 — this isn't branding. It's the lens through which strategy, creativity, and service are built. Everything flows from here.</p></div>
+    <div class="pillar"><div class="p-num">01</div><div class="p-title">Economic Immersion over Speculation</div><p class="p-text">Real participation loops beat price watching. I help people and projects get inside the system — not just observe it.</p></div>
+    <div class="pillar"><div class="p-num">02</div><div class="p-title">Narrative Resilience</div><p class="p-text">Stories that survive bear markets. Narrative is the only durable asset in volatile space — I help build that from day one.</p></div>
+    <div class="pillar"><div class="p-num">03</div><div class="p-title">Metaverse as Coordination Layer</div><p class="p-text">Not pixels or hype. A genuine space where ownership, community, and culture converge into something structurally real.</p></div>
+    <div class="pillar"><div class="p-num">04</div><div class="p-title">Faith as Foundation</div><p class="p-text">𓆩 Son of God 𓆪 — not branding. The lens through which every strategy, creative decision, and service is built.</p></div>
   </div>
 </div>
 
@@ -902,6 +932,12 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
 </footer>
 
 <script>
+  // BACK TO TOP
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('visible', window.scrollY > 400);
+  });
+
   // HAMBURGER
   function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
@@ -914,11 +950,7 @@ footer p { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing
     document.getElementById('hamburger').classList.remove('open');
   }
 
-  // BACK TO TOP
-  const backTop = document.getElementById('backTop');
-  window.addEventListener('scroll', () => {
-    backTop.classList.toggle('visible', window.scrollY > 400);
-  });
+  // BACK TO TOP button handled in scroll progress listener above
 
   // FLIP CARDS — clean toggle, tap to reveal / tap to flip back
   document.querySelectorAll('.flip').forEach(card => {
